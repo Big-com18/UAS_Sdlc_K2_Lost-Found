@@ -1,5 +1,19 @@
+# Dependencies
 node_modules/
+
+# Production build output
 dist/
-.env*
-.DS_Store
+.vite/
+
+# Environment variables & local secrets
+.env
+.env.*
 *.local
+
+# System & OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/

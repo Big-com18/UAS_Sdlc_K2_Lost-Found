@@ -1,47 +1,33 @@
-# Campus Lost & Found
+# Campus Lost & Found — Sprint P12: US1, US8, US6 (13/14 poin)
 
-## Purpose
+Hanya 3 story dari Revised Sprint Backlog P12 yang dibuat, dengan **tampilan Mahasiswa dan Petugas Security terpisah**
+(tombol di kanan atas). US2, US3, US4, US5, US7 sengaja belum dibuat (sprint berikutnya).
 
-This starter application displays simple campus lost-and-found records. It provides a small client-side codebase for an SDLC class exercise.
+## Petugas Security
+- **Catat Barang Temuan (US1)** — jenis, waktu & lokasi ditemukan, deskripsi, pihak yang menyerahkan, lokasi penyimpanan. Catatan bisa dibuka lagi dan menampilkan lokasi penyimpanan.
+- **Klaim Masuk (US6 + US8)** — bandingkan bukti dari mahasiswa dengan catatan barang, lalu **Setujui** atau **Tolak** (alasan wajib).
+- **Barang Temuan** — rincian lengkap, daftar klaim, catat klaim langsung di pos, dan **Tandai Dikembalikan**.
+- Isi nama di kolom **Petugas** (atas halaman); nama itu dicatat sebagai pemverifikasi.
 
-## Requirements
+## Mahasiswa
+- **Barang Temuan** — daftar sederhana (id, jenis, tanggal; high-value disamarkan) hanya sebagai titik masuk untuk mengajukan klaim. Mahasiswa mengisi ciri-ciri/isi barang; barang high-value mendapat **kode klaim**.
+- **Klaim Saya** — status klaim: menunggu / disetujui / ditolak (dengan alasan) / sudah diserahkan.
 
-- A current Node.js LTS release
-- npm
+## Aturan penyerahan
+`Tandai Dikembalikan` hanya berhasil jika ada klaim yang **disetujui** petugas; berlaku untuk semua barang (US6).
+Barang bernilai tinggi (Dompet, Smartphone, Laptop, Kartu Identitas, atau ditandai manual) mendapat banner penahanan + kode klaim (US8).
+Aturan dijaga di `markReturned()`, bukan hanya tombol. Saat barang dikembalikan, klaim lain untuk barang itu otomatis ditolak.
 
-## Quick Start
-
+## Menjalankan
 ```bash
 npm install
 npm run dev
+npm test
 ```
+Atau ganti folder `src/` di proyek Vite-mu.
 
-Open the local address shown by Vite. Run `npm run build` to create a production build in `dist/`.
-
-## What Works
-
-- View six seeded item records and select an item for details.
-- See total and stored item counts.
-- Change a `FOUND` item to `STORED` with **Mark as Stored**.
-- Reset all browser demo changes to the original seed data.
-
-## Data & Reset
-
-Static starter records come from `src/data/seed.js`. Changes are saved as JSON under `sdlc:case-a:v1` in this browser's `localStorage`. They are not shared with another browser or device and are not written back to Git. Use **Reset Demo Data** to restore a fresh copy of the seed data.
-
-## Project Structure
-
-- `src/App.jsx` owns the page state and connects the UI actions.
-- `src/components/` contains the item list, cards, details, and status badge.
-- `src/data/seed.js` contains deterministic demo records.
-- `src/utils/itemUtils.js` contains small item transformations and counts.
-- `src/utils/storage.js` safely loads, saves, and resets local browser data.
-- `src/styles.css` contains the responsive page styles.
-
-## Collaboration Notes
-
-Work from your group's own Sprint Backlog. Use a branch, make focused commits, open a pull request, and ask a peer to review it before merge. Keep the code change and review evidence connected to the backlog item selected by your group.
-
-## Limitations
-
-This is a client-side demonstration only. It has no backend, authentication, shared database, or cross-device synchronization. Browser data is for local practice and should not be used for sensitive or operational information.
+## Asumsi (bukan fakta stakeholder)
+- Tanpa login; nama petugas & mahasiswa diisi manual (otorisasi staf = P10 Q4, Open).
+- Pengajuan klaim oleh mahasiswa adalah cara memasukkan "bukti kepemilikan" agar verifikasi petugas punya data; P10 belum mendefinisikannya (cara verifikasi = Q3, Q10, Open).
+- Kode klaim hanya untuk high-value (judul US8 di P11). Definisi high-value masih Open (Q2).
+- Acceptance criteria US8 belum ada di P10; ditulis saat refinement (P12 bagian D).
