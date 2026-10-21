@@ -24,7 +24,7 @@ export default function StudentItemDetails({ item, studentName, onClaim }) {
       {denied && <p className="form-error" role="alert">Akses ditolak: rincian lengkap hanya dapat dilihat petugas yang berwenang.</p>}
 
       <section className="secondary-section">
-        <ClaimForm key={`${item.id}-${studentName}`} highValue={item.highValue} onSubmit={(input) => onClaim(item.id, input)} />
+        <ClaimForm key={`${item.id}-${studentName}`} highValue={item.highValue} questions={item.verificationQuestions ?? []} onSubmit={(input) => onClaim(item.id, input)} />
       </section>
     </>
   );

@@ -3,6 +3,18 @@
 
 const noReturn = { returnedTo: '', returnedAt: '', handoverNotes: '' };
 
+// US8 / R11: pertanyaan verifikasi contoh untuk barang bernilai tinggi (bagian dari data demo).
+const walletQuestions = [
+  'Kartu atau dokumen apa saja yang ada di dalam dompet?',
+  'Apa warna dan bahan dompet tersebut?',
+  'Apakah ada benda kecil tambahan di dalam atau di luar dompet? Sebutkan.',
+];
+const phoneQuestions = [
+  'Apa warna dan merek smartphone tersebut?',
+  'Apa ciri khas casing atau kerusakan yang ada pada smartphone?',
+  'Apa gambar latar (wallpaper) layar kunci smartphone?',
+];
+
 const items = [
   {
     id: 'ITEM-001',
@@ -18,6 +30,7 @@ const items = [
     highValue: true,
     status: 'STORED',
     recordedAt: '2026-10-08T03:20:00.000Z',
+    verificationQuestions: [...walletQuestions],
     ...noReturn,
   },
   {
@@ -34,6 +47,7 @@ const items = [
     highValue: false,
     status: 'STORED',
     recordedAt: '2026-10-09T06:10:00.000Z',
+    verificationQuestions: [],
     ...noReturn,
   },
   {
@@ -50,6 +64,7 @@ const items = [
     highValue: false,
     status: 'STORED',
     recordedAt: '2026-10-09T08:40:00.000Z',
+    verificationQuestions: [],
     ...noReturn,
   },
   {
@@ -66,6 +81,7 @@ const items = [
     highValue: false,
     status: 'STORED',
     recordedAt: '2026-10-10T05:30:00.000Z',
+    verificationQuestions: [],
     ...noReturn,
   },
   {
@@ -82,6 +98,7 @@ const items = [
     highValue: false,
     status: 'STORED',
     recordedAt: '2026-10-10T09:05:00.000Z',
+    verificationQuestions: [],
     ...noReturn,
   },
   {
@@ -98,6 +115,7 @@ const items = [
     highValue: false,
     status: 'STORED',
     recordedAt: '2026-10-11T02:50:00.000Z',
+    verificationQuestions: [],
     ...noReturn,
   },
   {
@@ -114,6 +132,7 @@ const items = [
     highValue: true,
     status: 'STORED',
     recordedAt: '2026-10-12T04:15:00.000Z',
+    verificationQuestions: [...walletQuestions],
     ...noReturn,
   },
   {
@@ -130,6 +149,7 @@ const items = [
     highValue: true,
     status: 'STORED',
     recordedAt: '2026-10-14T07:30:00.000Z',
+    verificationQuestions: [...phoneQuestions],
     ...noReturn,
   },
   {
@@ -146,6 +166,7 @@ const items = [
     highValue: true,
     status: 'STORED',
     recordedAt: '2026-10-13T10:10:00.000Z',
+    verificationQuestions: [...walletQuestions],
     ...noReturn,
   },
 ];
@@ -156,6 +177,11 @@ const claims = [
     itemId: 'ITEM-007',
     claimantName: 'Rina',
     proofNotes: 'Dompet coklat, di dalamnya ada kartu mahasiswa dan foto kucing',
+    answers: [
+      { question: walletQuestions[0], answer: 'Kartu mahasiswa dan foto kucing', dontRemember: false, correct: false },
+      { question: walletQuestions[1], answer: 'Coklat tua', dontRemember: false, correct: false },
+      { question: walletQuestions[2], answer: 'Gantungan kunci kecil', dontRemember: false, correct: false },
+    ],
     claimCode: 'CLM-007-K4Q2',
     status: 'PENDING',
     verifierName: '',
@@ -169,6 +195,7 @@ const claims = [
     itemId: 'ITEM-002',
     claimantName: 'Budi',
     proofNotes: 'Tumbler biru, ada stiker bintang di tutup',
+    answers: [],
     claimCode: '',
     status: 'APPROVED',
     verifierName: 'Ahmad Fuady',

@@ -80,7 +80,7 @@ export default function ItemForm({ onSubmit }) {
           <small>
             {locked
               ? ' (otomatis untuk jenis ini; penyerahan wajib diverifikasi petugas)'
-              : ' (centang bila perlu penanganan khusus; daftar jenis belum final, A6)'}
+              : ' (centang bila perlu penanganan khusus; daftar jenis belum final, A5)'}
           </small>
         </span>
       </label>
